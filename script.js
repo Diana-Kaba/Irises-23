@@ -20,18 +20,15 @@ for (let i = 0; i < irises.length; i++) {
 }
 
 function go(event) {
-  let flower = document.getElementById(event.target.id);
-  let breed = flower.dataset.breed;
-
-  let coords = getCoords(flower);
-  // shiftX - сдвиг курсора от левого края картинки
-  let shiftX = event.pageX - coords.left;
-  // shiftY - сдвиг курсора от верхнего края картинки
-  let shiftY = event.pageY - coords.top;
-
+    let flower = document.getElementById(event.target.id);
+    let breed = flower.dataset.breed;
+    let coords = getCoords(flower);
+    let shiftX = event.pageX - coords.left;
+    let shiftY = event.pageY - coords.top;
+// console.log(shiftX + " " + shiftY);
   moveAt(event);
   // функция перемещения объекта под координаты курсора
-  function moveAt(evente) {
+  function moveAt(event) {
     // shiftX и shiftY - сдвиг курсора относительно верхнего левого угла картинки
     var left = event.pageX - shiftX;
     var top = event.pageY - shiftY;
@@ -40,21 +37,20 @@ function go(event) {
     flower.style.top = top + "px";
 
     // Координаты картинки относительно окна
-    showCoords.innerHTML =
-      "x: " + flower.style.left + " y: " + flower.style.top;
+    showCoords.innerHTML = `x: ${flower.style.left}, y: ${flower.style.top}`;
     // if (left > 5 && left < 405 && top > 5 && top < 305) {
     //   wrap.style.border = "2px red solid";
     // } else
     //   wrap.style.border = "none";
   }
 
-   // событие перемещения мыши
-   document.onmousemove = function (event) {
+  // событие перемещения мыши
+  document.onmousemove = function (event) {
     moveAt(event);
   };
 
-   // событие  отпускания мыши
-   flower.onmouseup = function (event) {
+  // событие  отпускания мыши
+  flower.onmouseup = function (event) {
     res(event);
   };
 
