@@ -52,6 +52,16 @@ function go(event) {
    document.onmousemove = function (event) {
     moveAt(event);
   };
+
+   // событие  отпускания мыши
+   flower.onmouseup = function (event) {
+    res(event);
+  };
+
+  function res(event) {
+    document.onmousemove = null;
+    flower.onmouseup = null;
+  }
 }
 
 function getCoords(elem) {
