@@ -19,6 +19,22 @@ for (let i = 0; i < irises.length; i++) {
   irises[i].onmousedown = go;
 }
 
+//проверка, попадает ли на поле f цветок с координатами left, top
+function onField(f, left, top) {
+  let field = getCoords(f); // получили координаты top и left, а также width и height текущего поля f
+
+  if (
+    left > field.left &&
+    left < field.left + field.width &&
+    top > field.top &&
+    top < field.top + field.height &&
+    (f == tan || f == pink)
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function go(event) {
   let flower = document.getElementById(event.target.id);
   let breed = flower.dataset.breed;
@@ -42,6 +58,25 @@ function go(event) {
     //   wrap.style.border = "2px red solid";
     // } else
     //   wrap.style.border = "none";
+
+    if (onField(tan, left, top)) {
+      if (breed == "tan") {
+        tan.style.border = "2px solid green";
+        pink.style.border = "none";
+      } else {
+        tan.style.border = "2px solid red";
+        pink.style.border = "none";
+      }
+    }
+    if (onField(pink, left, top)) {
+      if (breed == "pink") {
+        pink.style.border = "2px solid green";
+        tan.style.border = "none";
+      } else {
+        pink.style.border = "2px solid red";
+        tan.style.border = "none";
+      }
+    }
   }
 
   // событие перемещения мыши
@@ -55,6 +90,33 @@ function go(event) {
   };
 
   function res(event) {
+    irisesState[flower.id] = false; // сброс состояния текущего цветка
+    tan.style.border = "none";
+    pink.style.border = "none";
+
+    let left = parseInt(flower.style.left);
+    let top = parseInt(flower.style.top);
+    //alert(left);
+
+    if (onField(tan, left, top)) {
+      if (breed == "tan") {
+        irisesState[flower.id] = true;
+      } else {
+        irisesState[flower.id] = false;
+      }
+    }
+    if (onField(pink, left, top)) {
+      if (breed == "pink") {
+        irisesState[flower.id] = true;
+      } else {
+        irisesState[flower.id] = false;
+      }
+    }
+    console.log(irisesState);
+    //..... проверить поле pink
+
+    //реализовать - если цветок находится на своем поле, то  irisesState[flower.id] = true, иначе - irisesState[flower.id] = false
+
     document.onmousemove = null;
     flower.onmouseup = null;
   }
@@ -62,6 +124,18 @@ function go(event) {
   flower.ondragstart = function () {
     return false; // отмена drag and drop браузера
   };
+}
+
+function check() {
+  // Проверка, все ли ирисы на своем поле
+  // реализовать - если в массиве irisesState хотя бы одно значение false, то выдавать сообщение "Error", если все true - то "OK". Сообщение писать в state
+  let res = true;
+  //for (let i = 0; i < irisesState.length; i++) {
+  for (const key in irisesState) {
+    if (!irisesState[key]) {
+      //
+    }
+  }
 }
 
 function getCoords(elem) {
