@@ -20,12 +20,12 @@ for (let i = 0; i < irises.length; i++) {
 }
 
 function go(event) {
-    let flower = document.getElementById(event.target.id);
-    let breed = flower.dataset.breed;
-    let coords = getCoords(flower);
-    let shiftX = event.pageX - coords.left;
-    let shiftY = event.pageY - coords.top;
-// console.log(shiftX + " " + shiftY);
+  let flower = document.getElementById(event.target.id);
+  let breed = flower.dataset.breed;
+  let coords = getCoords(flower);
+  let shiftX = event.pageX - coords.left;
+  let shiftY = event.pageY - coords.top;
+  // console.log(shiftX + " " + shiftY);
   moveAt(event);
   // функция перемещения объекта под координаты курсора
   function moveAt(event) {
@@ -58,6 +58,10 @@ function go(event) {
     document.onmousemove = null;
     flower.onmouseup = null;
   }
+
+  flower.ondragstart = function () {
+    return false; // отмена drag and drop браузера
+  };
 }
 
 function getCoords(elem) {
