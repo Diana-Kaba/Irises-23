@@ -1,26 +1,27 @@
-let tan = document.getElementById("tan");
-let pink = document.getElementById("pink");
+let golden = document.getElementById("golden");
+let blue = document.getElementById("blue");
+let brown = document.getElementById("brown");
 let showCoords = document.getElementById("showCoords");
 let state = document.getElementById("state");
 
-let irises = document.getElementsByClassName("iris");
+let checkButton = document.getElementById("check");
+checkButton.addEventListener("click", check);
 
-let irisesState = [];
+let dogs = document.getElementsByClassName("dog");
 
-for (let i = 0; i < irises.length; i++) {
-  //   const element = irises[i].id;
-  //   console.log(element);
-  irisesState[irises[i].id] = false;
+let dogsState = [];
+
+for (let i = 0; i < dogs.length; i++) {
+  dogsState[dogs[i].id] = false;
 }
 
-console.log(irisesState);
-
-for (let i = 0; i < irises.length; i++) {
-  irises[i].onmousedown = go;
+for (let i = 0; i < dogs.length; i++) {
+  dogs[i].onmousedown = go;
 }
 
-//проверка, попадает ли на поле f цветок с координатами left, top
+
 function onField(f, left, top) {
+  // проверка, попадает ли на поле f собак с координатами left, top
   let field = getCoords(f); // получили координаты top и left, а также width и height текущего поля f
 
   if (
@@ -28,7 +29,7 @@ function onField(f, left, top) {
     left < field.left + field.width &&
     top > field.top &&
     top < field.top + field.height &&
-    (f == tan || f == pink)
+    (f == golden || f == blue || f == brown)
   ) {
     return true;
   }
@@ -36,45 +37,57 @@ function onField(f, left, top) {
 }
 
 function go(event) {
-  let flower = document.getElementById(event.target.id);
-  let breed = flower.dataset.breed;
-  let coords = getCoords(flower);
+  let dog = document.getElementById(event.target.id);
+  let breed = dog.dataset.breed;
+  let coords = getCoords(dog);
   let shiftX = event.pageX - coords.left;
   let shiftY = event.pageY - coords.top;
-  // console.log(shiftX + " " + shiftY);
   moveAt(event);
   // функция перемещения объекта под координаты курсора
   function moveAt(event) {
     // shiftX и shiftY - сдвиг курсора относительно верхнего левого угла картинки
-    var left = event.pageX - shiftX;
-    var top = event.pageY - shiftY;
+    let left = event.pageX - shiftX;
+    let top = event.pageY - shiftY;
 
-    flower.style.left = left + "px";
-    flower.style.top = top + "px";
+    dog.style.left = left + "px";
+    dog.style.top = top + "px";
 
     // Координаты картинки относительно окна
-    showCoords.innerHTML = `x: ${flower.style.left}, y: ${flower.style.top}`;
-    // if (left > 5 && left < 405 && top > 5 && top < 305) {
-    //   wrap.style.border = "2px red solid";
-    // } else
-    //   wrap.style.border = "none";
+    showCoords.innerHTML = `x: ${dog.style.left}, y: ${dog.style.top}`;
 
-    if (onField(tan, left, top)) {
-      if (breed == "tan") {
-        tan.style.border = "2px solid green";
-        pink.style.border = "none";
+    if (onField(golden, left, top)) {
+      if (breed == "golden") {
+        golden.style.border = "3px solid green";
+        blue.style.border = "none";
+        brown.style.border = "none";
       } else {
-        tan.style.border = "2px solid red";
-        pink.style.border = "none";
+        golden.style.border = "3px solid red";
+        blue.style.border = "none";
+        brown.style.border = "none";
       }
     }
-    if (onField(pink, left, top)) {
-      if (breed == "pink") {
-        pink.style.border = "2px solid green";
-        tan.style.border = "none";
+
+    if (onField(blue, left, top)) {
+      if (breed == "blue") {
+        blue.style.border = "3px solid green";
+        brown.style.border = "none";
+        golden.style.border = "none";
       } else {
-        pink.style.border = "2px solid red";
-        tan.style.border = "none";
+        blue.style.border = "3px solid red";
+        brown.style.border = "none";
+        golden.style.border = "none";
+      }
+    }
+
+    if (onField(brown, left, top)) {
+      if (breed == "brown") {
+        brown.style.border = "3px solid green";
+        blue.style.border = "none";
+        golden.style.border = "none";
+      } else {
+        brown.style.border = "3px solid red";
+        blue.style.border = "none";
+        golden.style.border = "none";
       }
     }
   }
@@ -85,62 +98,70 @@ function go(event) {
   };
 
   // событие  отпускания мыши
-  flower.onmouseup = function (event) {
+  dog.onmouseup = function (event) {
     res(event);
   };
 
   function res(event) {
-    irisesState[flower.id] = false; // сброс состояния текущего цветка
-    tan.style.border = "none";
-    pink.style.border = "none";
+    dogsState[dog.id] = false; // сброс состояния текущей собаки
+    golden.style.border = "none";
+    blue.style.border = "none";
+    brown.style.border = "none";
 
-    let left = parseInt(flower.style.left);
-    let top = parseInt(flower.style.top);
-    //alert(left);
+    let left = parseInt(dog.style.left);
+    let top = parseInt(dog.style.top);
 
-    if (onField(tan, left, top)) {
-      if (breed == "tan") {
-        irisesState[flower.id] = true;
+    if (onField(golden, left, top)) {
+      if (breed == "golden") {
+        dogsState[dog.id] = true;
       } else {
-        irisesState[flower.id] = false;
+        dogsState[dog.id] = false;
       }
     }
-    if (onField(pink, left, top)) {
-      if (breed == "pink") {
-        irisesState[flower.id] = true;
+    if (onField(blue, left, top)) {
+      if (breed == "blue") {
+        dogsState[dog.id] = true;
       } else {
-        irisesState[flower.id] = false;
+        dogsState[dog.id] = false;
       }
     }
-    console.log(irisesState);
-    //..... проверить поле pink
-
-    //реализовать - если цветок находится на своем поле, то  irisesState[flower.id] = true, иначе - irisesState[flower.id] = false
+    if (onField(brown, left, top)) {
+      if (breed == "brown") {
+        dogsState[dog.id] = true;
+      } else {
+        dogsState[dog.id] = false;
+      }
+    }
+    //... проверить поле
+    // реализовать - если собака находится на своем поле, то  dogsState[dog.id] = true, иначе - dogsState[dog.id] = false
 
     document.onmousemove = null;
-    flower.onmouseup = null;
+    dog.onmouseup = null;
   }
 
-  flower.ondragstart = function () {
+  dog.ondragstart = function () {
     return false; // отмена drag and drop браузера
   };
 }
 
 function check() {
-  // Проверка, все ли ирисы на своем поле
-  // реализовать - если в массиве irisesState хотя бы одно значение false, то выдавать сообщение "Error", если все true - то "OK". Сообщение писать в state
+  // проверка, все ли собаки на своем поле
   let res = true;
-  //for (let i = 0; i < irisesState.length; i++) {
-  for (const key in irisesState) {
-    if (!irisesState[key]) {
-      //
+  for (const key in dogsState) {
+    if (!dogsState[key]) {
+      res = false;
+      state.innerHTML = "Error!";
+      break;
+    } else {
+      state.innerHTML = "OK";
+      break;
     }
   }
 }
 
 function getCoords(elem) {
-  var box = elem.getBoundingClientRect();
-  //scrollX и scrollY возвращают скроллирование окна в пикселях
+  let box = elem.getBoundingClientRect();
+  // scrollX и scrollY возвращают скроллирование окна в пикселях
   return {
     height: box.height,
     width: box.width,

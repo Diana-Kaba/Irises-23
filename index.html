@@ -7,54 +7,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog show</title>
     <style>
-        #tan {
+        #brown {
             width: 400px;
             height: 300px;
-            background: tan;
+            background: rgb(180, 95, 46);
             display: inline-block;
         }
 
-        #pink {
+        #golden {
             width: 400px;
             height: 300px;
-            background: pink;
+            background: rgb(216, 169, 52);
+            display: inline-block;
+        }
+
+        #blue {
+            width: 400px;
+            height: 300px;
+            background: rgb(76, 76, 223);
             display: inline-block;
         }
 
         #showCoords,
         #state {
             position: absolute;
-            width: 200px;
+            width: 100px;
             height: 50px;
-            left: 840px;
+            left: 1225px;
             top: 5px;
             border: 1px solid;
             padding-left: 5px;
+            margin-top: 3px;
         }
 
         #state {
             top: 55px;
         }
 
-        img {
+        #dog1 {
             width: 100px;
+        }
+
+        #dog2 {
+            width: 141px;
+            margin-top: 9px;
+        }
+
+        #dog3 {
+            width: 170px;
+            padding-left: 10px;
+        }
+
+        #check {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+            min-height: 20px;
+            min-width: 70px;
+        }
+
+        #check:hover {
+            background-color: #000000;
+            transition: 0.7s;
+            color: #fff;
         }
     </style>
 </head>
 
 <body>
-    <div id="tan" style="border: none"></div>
-    <div id="pink" style="border: none"></div>
-    <img id="iris1" style="position: absolute; left: 10px; top: 320px" src="http://js.web-online.net.ua/fl1.jpg"
-        draggable="true" data-breed="pink" class="iris"/>
-    <img id="iris2" style="position: absolute; left: 120px; top: 320px" src="http://js.web-online.net.ua/fl2.jpg"
-        draggable="true" data-breed="tan" class="iris"/>
-    <img id="iris3" style="position: absolute; left: 230px; top: 320px" src="http://js.web-online.net.ua/fl2.jpg"
-        draggable="true" data-breed="tan" class="iris"/>
+    <div id="golden" style="border: none"></div>
+    <div id="blue" style="border: none"></div>
+    <div id="brown" style="border: none"></div>
+    <img id="dog1" style="position: absolute; left: 10px; top: 320px" src="./images/korgi.jpg" draggable="true"
+        data-breed="golden" class="dog" />
+    <img id="dog2" style="position: absolute; left: 120px; top: 320px" src="./images/hacki.png" draggable="true"
+        data-breed="blue" class="dog" />
+    <img id="dog3" style="position: absolute; left: 230px; top: 320px" src="./images/takca.jpg" draggable="true"
+        data-breed="brown" class="dog" />
     <div id="showCoords"></div>
     <div id="state"></div>
-    <input type="button" name="" onclick="check()" value="Check order"
-        style="position: absolute; left: 840px; top: 150px" />
+    <input type="button" name="" value="Check breed"
+        style="position: absolute; left: 1235px; top: 150px" id="check" />
     <script src="./script.js"></script>
 </body>
 
