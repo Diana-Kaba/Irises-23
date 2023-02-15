@@ -12,13 +12,16 @@ let dogs = document.getElementsByClassName("dog");
 let dogsState = [];
 
 for (let i = 0; i < dogs.length; i++) {
+  const element = dogs[i].id;
+  console.log(element);
   dogsState[dogs[i].id] = false;
 }
+
+console.log(dogsState);
 
 for (let i = 0; i < dogs.length; i++) {
   dogs[i].onmousedown = go;
 }
-
 
 function onField(f, left, top) {
   // проверка, попадает ли на поле f собак с координатами left, top
@@ -154,7 +157,6 @@ function check() {
       break;
     } else {
       state.innerHTML = "OK";
-      break;
     }
   }
 }

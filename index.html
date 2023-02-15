@@ -1,102 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dog show</title>
     <style>
-        #brown {
-            width: 400px;
-            height: 300px;
-            background: rgb(180, 95, 46);
-            display: inline-block;
-        }
+      #brown {
+        width: 400px;
+        height: 300px;
+        background: rgb(180, 95, 46);
+        display: inline-block;
+      }
 
-        #golden {
-            width: 400px;
-            height: 300px;
-            background: rgb(216, 169, 52);
-            display: inline-block;
-        }
+      #golden {
+        width: 400px;
+        height: 300px;
+        background: rgb(216, 169, 52);
+        display: inline-block;
+      }
 
-        #blue {
-            width: 400px;
-            height: 300px;
-            background: rgb(76, 76, 223);
-            display: inline-block;
-        }
+      #blue {
+        width: 400px;
+        height: 300px;
+        background: rgb(76, 76, 223);
+        display: inline-block;
+      }
 
-        #showCoords,
-        #state {
-            position: absolute;
-            width: 100px;
-            height: 50px;
-            left: 1225px;
-            top: 5px;
-            border: 1px solid;
-            padding-left: 5px;
-            margin-top: 3px;
-        }
+      #showCoords,
+      #state {
+        position: absolute;
+        width: 100px;
+        height: 50px;
+        left: 1225px;
+        top: 5px;
+        border: 1px solid;
+        padding-left: 5px;
+        margin-top: 3px;
+      }
 
-        #state {
-            top: 55px;
-        }
+      #state {
+        top: 55px;
+      }
 
-        #dog1 {
-            width: 100px;
-        }
+      #dog1 {
+        width: 100px;
+      }
 
-        #dog2 {
-            width: 141px;
-            margin-top: 9px;
-        }
+      #dog2 {
+        width: 141px;
+        margin-top: 9px;
+      }
 
-        #dog3 {
-            width: 170px;
-            padding-left: 10px;
-        }
+      #dog3 {
+        width: 170px;
+        padding-left: 10px;
+      }
 
-        #dog4 {
-            width: 300px;
-            padding-left: 70px;
-        }
+      #dog4 {
+        width: 140px;
+        padding-left: 170px;
+      }
 
-        #check {
-            background-color: #fff;
-            color: #000;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-            min-height: 20px;
-            min-width: 70px;
-        }
+      #dog5 {
+        width: 100px;
+        padding-left: 403px;
+      }
 
-        #check:hover {
-            background-color: #000000;
-            transition: 0.7s;
-            color: #fff;
-        }
+      #dog6 {
+        width: 150px;
+        padding-left: 370px;
+      }
+
+      #check {
+        background-color: #fff;
+        color: #000;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+        min-height: 20px;
+        min-width: 70px;
+      }
+
+      #check:hover {
+        background-color: #000000;
+        transition: 0.7s;
+        color: #fff;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="golden" style="border: none"></div>
     <div id="blue" style="border: none"></div>
     <div id="brown" style="border: none"></div>
-    <img id="dog1" style="position: absolute; left: 10px; top: 320px" src="./images/korgi.jpg" draggable="true"
-        data-breed="golden" class="dog" />
-    <img id="dog2" style="position: absolute; left: 120px; top: 320px" src="./images/hacki.png" draggable="true"
-        data-breed="blue" class="dog" />
-    <img id="dog3" style="position: absolute; left: 230px; top: 320px" src="./images/takca.jpg" draggable="true"
-        data-breed="brown" class="dog" />
-    <img id="dog4" style="position: absolute; left: 230px; top: 320px" src="./images/korgi2.png" draggable="true"
-        data-breed="golden" class="dog" />
+    <img
+      id="dog1"
+      style="position: absolute; left: 10px; top: 320px"
+      src="./images/korgi.jpg"
+      draggable="true"
+      data-breed="golden"
+      class="dog"
+    />
+    <img
+      id="dog2"
+      style="position: absolute; left: 120px; top: 320px"
+      src="./images/hacki.png"
+      draggable="true"
+      data-breed="blue"
+      class="dog"
+    />
+    <img
+      id="dog3"
+      style="position: absolute; left: 230px; top: 320px"
+      src="./images/takca.jpg"
+      draggable="true"
+      data-breed="brown"
+      class="dog"
+    />
+    <img
+      id="dog4"
+      style="position: absolute; left: 230px; top: 320px"
+      src="./images/korgi2.jpg"
+      draggable="true"
+      data-breed="golden"
+      class="dog"
+    />
+    <img
+      id="dog5"
+      style="position: absolute; left: 120px; top: 320px"
+      src="./images/hacki2.1.jpg"
+      draggable="true"
+      data-breed="blue"
+      class="dog"
+    />
+    <img
+      id="dog6"
+      style="position: absolute; left: 230px; top: 320px"
+      src="./images/takca2.jpg"
+      draggable="true"
+      data-breed="brown"
+      class="dog"
+    />
     <div id="showCoords"></div>
     <div id="state"></div>
-    <input type="button" name="" value="Check breed" style="position: absolute; left: 1235px; top: 150px" id="check" />
+    <input
+      type="button"
+      name=""
+      value="Check breed"
+      style="position: absolute; left: 1235px; top: 150px"
+      id="check"
+    />
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>
